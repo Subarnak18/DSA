@@ -1,0 +1,19 @@
+class Solution {
+    public int maximumSum(int[] arr) {
+
+        int noDelete = arr[0];
+        int oneDelete = 0;
+        int result = arr[0];
+
+        for(int i = 1; i < arr.length; i++)
+        {
+            int prevNoDelete = noDelete;
+            int prevOneDelete = oneDelete;
+            noDelete = Math.max(prevNoDelete + arr[i], arr[i]);
+            oneDelete = Math.max(prevOneDelete + arr[i], prevNoDelete);
+            result = Math.max(result, Math.max(noDelete, oneDelete));
+        }
+        
+        return result;
+    }
+}
